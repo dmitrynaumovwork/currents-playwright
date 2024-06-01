@@ -1,5 +1,14 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
+const { currentsReporter } = require('@currents/playwright'); // <---------- COMMENT this line to see the correct output stream
+
+// const currentsConfig = {
+//   ciBuildId: `${Math.round(Math.random() * 1000000)}`,
+//   recordKey: "secret record key",
+//   projectId: "project id",
+// };
+//                ^ ^ ^ ^ ^
+// UNCOMMENT the currentsConfig definition to report into app.currents.dev
 
 /**
  * Read environment variables from file.
@@ -21,7 +30,10 @@ module.exports = defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [
+    ['html', { open: 'never' }],
+    // currentsReporter(currentsConfig), // <------------------------------------ UNCOMMENT this line to report into app.currents.dev
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
