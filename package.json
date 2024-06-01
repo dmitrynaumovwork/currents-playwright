@@ -1,0 +1,18 @@
+{
+  "name": "currents-playwright",
+  "version": "1.0.0",
+  "description": "Incorrect line in the Playwright output stream if the Currents report is imported in playwright-config",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github-dmitrynaumovwork:dmitrynaumovwork/currents-playwright.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.44.1",
+    "@types/node": "^20.13.0"
+  }
+}
